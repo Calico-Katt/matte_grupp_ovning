@@ -1,0 +1,14 @@
+Ut ̈over funktioner som introduceras i Introlabbarna s ̊a kan f ̈oljande funktioner vara anv ̈andbara f ̈or
+att l ̈osa uppgifterna nedan: numpy.cross, numpy.linalg.norm, numpy.dot
+(a) Skriv kod i Python som kan anv ̈andas f ̈or att ber ̈akna projektionen av punkter p ̊a plan genom
+origo som anges antingen med tv ̊a riktningesvektorer eller med en normalvektor.
+(b) L ̊at P = (π, e, 1) samt
+u = (1, 1, 0) och v = (0, −1, 0).
+
+Anv ̈and din kod f ̈or att ber ̈akna projektionen av P p ̊a planet med riktningsvektorer u, v, samt
+p ̊a planet med riktningsvektorer u, −v. Motivera att resultatet st ̈ammer.
+(c) Anv ̈and din kod till att ber ̈akna projektionen av punkten P = (π, e, 1) p ̊a planen med normal-
+vektorer
+n =(1, 1, 1) respektive m = (3, 3, 3,).
+
+Motivera att resultatet st ̈ammer.

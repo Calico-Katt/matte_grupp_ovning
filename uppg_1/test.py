@@ -18,8 +18,8 @@ def projectPointToPlan(p, method = "direction"):
         n = interaction(method)
         n_array = np.array(n)
         #Sovle ekvation
-        u = np.dot(p_array, n_array) / np.dot(n_array, n_array)
-        p_projection = p_array - u * n_array
+        proj_n = (np.dot(p_array, n_array) / np.dot(n_array, n_array))*n_array
+        p_projection = p_array - proj_n
 
     else:
         raise ValueError("Method must be 'direction' or 'normal'")

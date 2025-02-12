@@ -7,7 +7,10 @@ def projectPointToPlan(p, method = "direction"):
     if method == "direction":
         v1, v2 = interaction(method)
         v1_array, v2_array = np.array(v1), np.array(v2) #Turn list into array gives easier acess to np functions
+
         #solve ekvation
+        #B) If v turns into -v the only thing that changes is the direction of the vector, the surface area are the same.
+        # In the ekvation the diffrent direction on the vector will only result in a new s or t value, this is because of the unchanged p and value of kordinets for the vectors (|v| = |-v|).
         a = np.array([[np.dot(v1_array, v1_array), np.dot(v1_array,v2_array)],
                       [np.dot(v2_array, v1_array), np.dot(v2_array, v2_array)]])
         b = np.array([np.dot(p_array, v1_array), np.dot(p_array, v2_array)])
@@ -18,6 +21,7 @@ def projectPointToPlan(p, method = "direction"):
         n = interaction(method)
         n_array = np.array(n)
         #Sovle ekvation
+        #C) In this case n and m is pointing in the same direction and m = 3*n, witch makes the vectors parallel to each other and the reason the answer is the same.
         proj_n = (np.dot(p_array, n_array) / np.dot(n_array, n_array))*n_array
         p_projection = p_array - proj_n
 

@@ -1,14 +1,13 @@
 import numpy as np
+import math
 
-#Need to send in p, v1 & v2 or n, and also method. v1, v2, n and p needs to be in list-types to work
-def projectPointToPlan(p, method = "direction", v1=None, v2=None, n=None):
+#v1, v2, n and p needs to be in list-types to work
+def projectPointToPlan(p, method = "direction"):
     p_array = np.array(p)
     if method == "direction":
-        #Need to input a interaction function that asks for the two vectors and check so the list have 3 positions. Value error might need to be moved to interaction.
-        if v1 is None or v2 is None:
-            raise ValueError("Two direction vectors needs too be given for the method 'direction'")
+        v1, v2 = interaction(method)
         v1_array, v2_array = np.array(v1), np.array(v2) #Turn list into array gives easier acess to np functions
-        #solve ekvation not sure this is rights need more time to check
+        #solve ekvation
         a = np.array([[np.dot(v1_array, v1_array), np.dot(v1_array,v2_array)],
                       [np.dot(v2_array, v1_array), np.dot(v2_array, v2_array)]])
         b = np.array([np.dot(p_array, v1_array), np.dot(p_array, v2_array)])
@@ -16,11 +15,9 @@ def projectPointToPlan(p, method = "direction", v1=None, v2=None, n=None):
         p_projection = s*v1_array + t*v2_array
 
     elif method == "normal":
-        #Add a input of the normal vector, with the help of an interactive function
-        if n is None:
-            raise ValueError("A normal vector needs to be given for the method normal to work")
+        n = interaction(method)
         n_array = np.array(n)
-        #Sovle scalar projection (i think I'm really not sure but is making the ekvation in the book in to code)
+        #Sovle ekvation
         u = np.dot(p_array, n_array) / np.dot(n_array, n_array)
         p_projection = p_array - u * n_array
 
@@ -29,4 +26,35 @@ def projectPointToPlan(p, method = "direction", v1=None, v2=None, n=None):
     
     #Depending on which if function is activated, the program will give the projection of the asked ekvation
     return p_projection 
+
+
+def interaction(method):
+    if method == "direction":
+        vector1 = list(map(parse_value, input("Enter the first vector (ex. 2, 3, -1): ").strip().split(',')))[:3]
+        vector2 = list(map(parse_value, input("Enter the secend vector (ex. 3, 6, -2): ").strip().split(',')))[:3]
+        return vector1, vector2
+    elif method == "normal":
+        nVector = list(map(parse_value, input("Enter the normal vector (ex. 3, 6, -2): ").strip().split(',')))[:3]
+        return nVector
+
+def parse_value(value):
+    valid_numbers = {
+        "π" : math.pi,
+        "e" : math.e}
+    value = value.strip()
+    if value in valid_numbers:
+        return valid_numbers[value]
+    return float(value)
+
+
+if __name__ == "__main__":
+    while True:
+        method = input("Witch method do you want to use: direction or normal? (direction takes two directed vectors and returns the projection, normal use a normalvector and returns the projection)" + "\n")
+        p = list(map(parse_value, input("Enter 'P'(ex. 3, 6, -2): ").strip().split(',')))[:3]
+        answer = projectPointToPlan(p, method)
+        print(f"The projection: {answer} \n")
+        start_stop = input("Klick enter to keep going or write 'quit' to exit program \n").strip().lower()
+        if start_stop == "quit":
+            print("Exiting program.\n")
+            break
 

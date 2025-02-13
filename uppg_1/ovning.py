@@ -62,3 +62,8 @@ if __name__ == "__main__":
             print("Exiting program.\n")
             break
 
+
+'''
+Motivation why this is correct:
+The program has been tested with different variables/arguments and all come back with correct and reasonable results.
+'''

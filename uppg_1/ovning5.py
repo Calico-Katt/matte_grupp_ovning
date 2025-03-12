@@ -40,7 +40,7 @@ def uppgiftA():
     #LA.eig beräkning
     eig_values, vectors = LA.eig(B)
     max_eig_value = np.max(np.abs(eig_values))
-    print(f"Uppgift A\nTestar våran kod och jämnför resultatet med det vi får från LA.eig()\nB = {B}\np = {p}\nVåran kod ger: {max_value}\n(LA.eig() returnerar i sig själv lista med egenvärden och en lista med egenvektorer, men vi söker bara största egenvärdet,vilket är det som vissas här)\nLA.eig ger: {max_eig_value}\nResultaten blir att:\t Våran kod = LA.eig : {max_eig_value==max_value}")
+    print(f"Uppgift A\nTestar våran kod och jämnför resultatet med det vi får från LA.eig()\nB = {B}\np = {p}\nVåran kod ger: {max_value}\n(LA.eig() returnerar i sig själv lista med egenvärden och en lista med egenvektorer, men vi söker bara största egenvärdet,vilket är det som vissas här)\nLA.eig ger: {max_eig_value}\nResultaten blir att:\t {max_value} = {max_eig_value} : {max_eig_value==max_value}\n")
 
 def uppgiftB():
     A = np.array(np.random.randint(low = -10, high = 10, size = (500, 500)))

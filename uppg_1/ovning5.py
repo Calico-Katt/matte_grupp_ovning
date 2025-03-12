@@ -19,26 +19,26 @@ def power_iteration(A, num_iterations: int):
 
     return b_k
 
-power_iteration(np.array([[0.5, 0.5], [0.2, 0.8]]), 10)
+print(power_iteration(np.array([[0.5, 0.5], [0.2, 0.8]]), 10))
 
 
 #Denna äkliga kod dök upp på wiki om Rayleigh quotient iteration
 """
-def qout(x):
-    function x = rayleigh(A, epsilon, mu, x)
-    x = x / norm(x);
-    % the backslash operator in Octave solves a linear system
-    y = (A - mu * eye(rows(A))) \ x; 
-    lambda(x, y' * x)
+def rayleigh(A, epsilon, mu, x)
+  x = x / norm(x);
+  % the backslash operator in Octave solves a linear system
+  y = (A - mu * eye(rows(A))) \ x; 
+  lambda = y' * x;
+  mu = mu + 1 / lambda
+  err = norm(y - lambda * x) / norm(y)
+
+  while err > epsilon
+    x = y / norm(y);
+    y = (A - mu * eye(rows(A))) \ x;
+    lambda = y' * x;
     mu = mu + 1 / lambda
     err = norm(y - lambda * x) / norm(y)
+  end
 
-    while err > epsilon
-        x = y / norm(y);
-        y = (A - mu * eye(rows(A))) \ x;
-        lambda = y' * x;
-        mu = mu + 1 / lambda
-        err = norm(y - lambda * x) / norm(y)
-    end
-end;
+end
 """

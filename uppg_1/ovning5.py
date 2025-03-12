@@ -48,7 +48,7 @@ def uppgiftB():
     p = 5
     λ, v = power_iteration(B, p)
     lenght = ((np.dot(B, v)) - (np.dot(λ, v)))
-    print(f"Uppgift B\nB = A + A^t\t500x500-matris\np = {p}\nstörsta egenvärdet λ = {λ}\nmotsvarande egenvektor v = {v}\nBv − λv = {lenght}")
+    print(f"Uppgift B\nB = A + A^t\t500x500-matris\np = {p}\nstörsta egenvärdet λ = {λ}\nmotsvarande egenvektor v = {v}\nBv − λv = {LA.norm(lenght)}")
     
 if __name__ == "__main__":
     uppgiftA()

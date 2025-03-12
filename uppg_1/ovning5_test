@@ -1,0 +1,22 @@
+import numpy as np
+from numpy import linalg as LA
+def Rayleigh_quotien(B, b):
+    b_t = np.transpose(b) 
+    quot = np.dot(b_t, (np.dot(B, b)))
+    return quot
+
+def rayleigh_iterations(B, epsilon): #Hittade igen möjlighet att använda mu, samt x får vi från våran funktion power_iteration
+  v = np.random.rand(B.shape[1])
+  b_k1 = np.dot(B, b_k)
+  b_k = b_k1 / LA.norm(b_k1)
+  #Exemplet hade 10 så jag tog lite högre än det. 
+  λ = Rayleigh_quotien(B, v)
+  err = np.inf #sätter det från början till pythons oändliga.
+  while err > epsilon:
+    v_new = np.dot(B - λ*np.eye(B.shape[0], v))
+    v_new = v_new/(LA.norm(v_new)) #Ser till så den nya vektor är normaliserad
+    λ_new = Rayleigh_quotien(B, v_new)
+    err = np.abs(λ_new -λ)
+    λ = λ_new
+    v = v_new
+  return λ, v

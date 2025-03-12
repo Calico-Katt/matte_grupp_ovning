@@ -34,7 +34,7 @@ def power_iteration(B, p):
 def uppgiftA():
     B = np.array([[9, 5],
                   [1, 5]])
-    p = 5; 
+    p = 10; 
     #Våran kod beräkning
     max_value, vector = power_iteration(B, p)
     #LA.eig beräkning
@@ -45,7 +45,7 @@ def uppgiftA():
 def uppgiftB():
     A = np.array(np.random.randint(low = -10, high = 10, size = (500, 500)))
     B = A + np.transpose(A)
-    p = 5
+    p = 10
     λ, v = power_iteration(B, p)
     lenght = ((np.dot(B, v)) - (np.dot(λ, v)))
     print(f"Uppgift B\nB = A + A^t\t500x500-matris\np = {p}\nstörsta egenvärdet λ = {λ}\nmotsvarande egenvektor v = {v}\nBv − λv = {LA.norm(lenght)}")
